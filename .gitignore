@@ -1,0 +1,12 @@
+# Xcode
+build/
+DerivedData/
+xcuserdata/
+*.xcworkspace/xcshareddata/swiftpm
+.swiftpm/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
