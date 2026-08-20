@@ -7,19 +7,31 @@
 
 import SwiftUI
 
+/// App entry flow: an animated splash (extending the instant native launch screen so the brand
+/// moment is actually visible), then a one-time onboarding for first launch, then the app itself.
 struct ContentView: View {
-    @StateObject private var library = VideoLibrary()
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    @State private var isShowingSplash = true
 
     var body: some View {
-        TabView {
-            VideoLibraryView()
-                .tabItem { Label("Videos", systemImage: "film") }
-            NewVideoView()
-                .tabItem { Label("New Video", systemImage: "plus.circle") }
-            SettingsView()
-                .tabItem { Label("Settings", systemImage: "gearshape") }
+        Group {
+            if isShowingSplash {
+                SplashView()
+                    .transition(.opacity)
+            } else if !hasSeenOnboarding {
+                OnboardingView { hasSeenOnboarding = true }
+                    .transition(.opacity)
+            } else {
+                MainTabView()
+                    .transition(.opacity)
+            }
         }
-        .environmentObject(library)
+        .animation(.easeInOut(duration: 0.4), value: isShowingSplash)
+        .animation(.easeInOut(duration: 0.4), value: hasSeenOnboarding)
+        .task {
+            try? await Task.sleep(nanoseconds: 1_800_000_000)
+            isShowingSplash = false
+        }
     }
 }
 
