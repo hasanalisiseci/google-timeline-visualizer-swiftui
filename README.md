@@ -40,11 +40,14 @@ natively with Core Graphics and AVFoundation.
 
 ## Screenshots
 
-<p align="center">
-  <img src="docs/screenshots/onboarding-1.png" width="220" alt="First onboarding page" />
-</p>
-
-<p align="center"><i>First-launch onboarding — three pages covering what the app does, how the camera behaves, and how to get your Timeline data.</i></p>
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/splash.png" width="200" alt="Splash screen" /><br /><sub>Splash</sub></td>
+    <td align="center"><img src="docs/screenshots/onboarding-1.png" width="200" alt="Onboarding" /><br /><sub>Onboarding</sub></td>
+    <td align="center"><img src="docs/screenshots/home.png" width="200" alt="New Video screen" /><br /><sub>New Video</sub></td>
+    <td align="center"><img src="docs/screenshots/settings.png" width="200" alt="Settings screen" /><br /><sub>Settings</sub></td>
+  </tr>
+</table>
 
 ## Getting your Timeline JSON
 
