@@ -1,6 +1,16 @@
 # Google Timeline Visualizer — SwiftUI
 
+<p align="center">
+  <img src="docs/screenshots/app-icon.png" width="120" alt="App icon" />
+</p>
+
 Turn your Google Maps Timeline into an animated travel video, entirely on your iPhone.
+
+<p align="center">
+  <img src="docs/screenshots/video-frame-square.png" width="360" alt="A frame from an exported journey video: route drawn on a map, title card, and a live city + distance-travelled caption" />
+</p>
+
+<p align="center"><i>A frame from an actual exported video — title card, route, and the live city / distance caption.</i></p>
 
 Import your Timeline export, pick a date range, and get back an MP4 that traces your
 route on a map — camera panning and zooming to follow you, city names and distance
@@ -27,6 +37,14 @@ natively with Core Graphics and AVFoundation.
 - **Nothing leaves your phone** except requests to the public basemap tile service
   (CartoDB) used to draw the map, and to Apple's geocoding service to resolve city
   names — no analytics, no account, no Google sign-in
+
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/onboarding-1.png" width="220" alt="First onboarding page" />
+</p>
+
+<p align="center"><i>First-launch onboarding — three pages covering what the app does, how the camera behaves, and how to get your Timeline data.</i></p>
 
 ## Getting your Timeline JSON
 
