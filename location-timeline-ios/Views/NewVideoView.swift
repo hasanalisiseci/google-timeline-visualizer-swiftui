@@ -18,16 +18,30 @@ struct NewVideoView: View {
     @State private var speed: VideoSpeed = .normal
     @State private var errorMessage: String?
     @State private var exportRequest: VideoExportRequest?
+    @State private var isShowingHowTo = false
 
     var body: some View {
         NavigationStack {
             Form {
                 Section("Timeline data") {
-                    Button(allPoints.isEmpty ? "Import Timeline.json" : "Re-import Timeline.json") {
-                        isImporting = true
+                    HStack {
+                        Button(allPoints.isEmpty ? "Import Timeline.json" : "Re-import Timeline.json") {
+                            isImporting = true
+                        }
+                        Spacer()
+                        Button {
+                            isShowingHowTo = true
+                        } label: {
+                            Image(systemName: "questionmark.circle")
+                        }
+                        .buttonStyle(.borderless)
                     }
                     if !allPoints.isEmpty {
                         Text("\(allPoints.count) location points loaded")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text("First time? Tap the ? for how to export your Timeline from Google Maps.")
+                            .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -71,6 +85,9 @@ struct NewVideoView: View {
             }
             .fullScreenCover(item: $exportRequest) { request in
                 ExportProgressView(request: request) { exportRequest = nil }
+            }
+            .sheet(isPresented: $isShowingHowTo) {
+                HowToExportView()
             }
             .onAppear {
                 cameraMovement = CameraMovement(rawValue: defaultCameraMovementRaw) ?? .dynamic
